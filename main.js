@@ -86,7 +86,7 @@ function adddata(obj, count) {
       // make input
       let theinput = document.createElement("input");
       // id / value / type
-      theinput.id = `answer ${i}`;
+     theinput.id = `answer_${i}`;
       theinput.type = "radio";
       theinput.dataset.answer = obj[`answer_${i}`]; 
       theinput.name = "question";
@@ -95,7 +95,7 @@ function adddata(obj, count) {
       // make label
       let label = document.createElement("label");
       // add for
-      label.htmlFor = obj[`answer_${i}`]; 
+  label.htmlFor = `answer_${i}`;
       // add text
       label.textContent = obj[`answer_${i}`];
       //append
