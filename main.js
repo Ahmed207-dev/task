@@ -12,47 +12,47 @@ let rightanswr = 0;
 async function Ajax() {
   try {
     let questionobject = await fetch("ques.json");
-    //
+  
     let data = await questionobject.json();
-    //
+  
     let datacount = data.length;
     //
 
     // count of questions
     createbullets(datacount);
-    //
+   
 
-    // functions
+
     adddata(data[current], datacount);
-    // functions
+
     but.onclick = () => {
       let therightanswer = data[current].right_answer;
       //
-      current++; // note 1
+      current++; 
       //
       check(therightanswer, datacount);
       //
-      answerArea.textContent = ""; //note 2
+      answerArea.textContent = "";
       //
       quiz.textContent = "";
       //
-      adddata(data[current], datacount); //note 3
+      adddata(data[current], datacount); 
       //
       handlebullet(); //note 4
       //
       showresult(datacount); //note 5
       //
-      countspan.textContent = datacount - current; //notes "use fkin brain"
+      countspan.textContent = datacount - current; 
     };
 
-    //if found error
+
   } catch (error) {
     console.log(`have a ${error}`);
   }
 }
 Ajax();
 
-// first function
+
 function createbullets(element) {
   for (let i = 0; i < element; i++) {
     countspan.textContent = element;
@@ -62,13 +62,12 @@ function createbullets(element) {
     }
     bulletspans.appendChild(bullet);
   }
-} // note in element in loop and if condition
+} 
 
-// second function
+
 
 function adddata(obj, count) {
   if (current < count) {
-    //note 6
 
     // make question
     let question = document.createElement("h2");
@@ -89,14 +88,14 @@ function adddata(obj, count) {
       // id / value / type
       theinput.id = `answer ${i}`;
       theinput.type = "radio";
-      theinput.dataset.answer = obj[`answer_${i}`]; //note 7
+      theinput.dataset.answer = obj[`answer_${i}`]; 
       theinput.name = "question";
       // append
       containerdiv.appendChild(theinput);
       // make label
       let label = document.createElement("label");
       // add for
-      label.htmlFor = obj[`answer_${i}`]; //note 8
+      label.htmlFor = obj[`answer_${i}`]; 
       // add text
       label.textContent = obj[`answer_${i}`];
       //append
@@ -106,7 +105,6 @@ function adddata(obj, count) {
 }
 // third function
 function check(ra, co) {
-  //note 9 all function
   let answers = document.getElementsByName("question");
   let chosen;
   for (let i = 0; i < answers.length; i++) {
